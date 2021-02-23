@@ -1,12 +1,25 @@
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
-import store from "./store";
-
-Vue.config.productionTip = false;
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import './plugins/element.js'
+import './assets/css/reset.css'
+import './assets/css/main.css'
+import '../src/utils/day.js'
+import dayjs from 'dayjs'
+// import Vconsole from 'vconsole'
+// let vConsole = new Vconsole()
+// Vue.use(vConsole)
+Vue.filter('dateFormate', (date) => {
+  return dayjs(date).fromNow()
+})
+Vue.filter('bookFormat', (date) => {
+  return dayjs(date).format('YYYY-MM-DD')
+})
+Vue.config.productionTip = false
 
 new Vue({
   router,
   store,
-  render: h => h(App)
-}).$mount("#app");
+  render: (h) => h(App),
+}).$mount('#app')
