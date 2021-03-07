@@ -1,7 +1,13 @@
 import { like } from '../api/article'
+import { hasUser } from '@/utils/tools'
 const likeOperate = {
   methods: {
     async handleLike(item) {
+      const flag = hasUser()
+      if (!flag) {
+        this.$router.push('/signin')
+        return
+      }
       try {
         const { data } = await like(item._id)
 
@@ -12,7 +18,7 @@ const likeOperate = {
         }
         item.isLiked = !item.isLiked
       } catch (error) {}
-    },
-  },
+    }
+  }
 }
 export default likeOperate

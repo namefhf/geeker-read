@@ -13,32 +13,30 @@ export default {
   name: 'ToTop',
   data() {
     return {
-      flag: false,
+      flag: false
     }
   },
   mounted() {
-    window.addEventListener(
-      'scroll',
-      this.debounce(() => {
-        let scroll_top = 0
-        if (document.documentElement && document.documentElement.scrollTop) {
-          scroll_top = document.documentElement.scrollTop
-        } else if (document.body) {
-          scroll_top = document.body.scrollTop
-        }
-        // console.log(scroll_top)
-        if (scroll_top > 3000) {
-          this.flag = true
-        } else {
-          this.flag = false
-        }
-      }, 500)
-    )
+    window.addEventListener('scroll', this.debounce(this.handleScroll, 300))
   },
   methods: {
     handleClick() {
       // document.body.scrollIntoView({ behavior: 'smooth' })
       document.querySelector('header').scrollIntoView({ behavior: 'smooth' })
+    },
+    handleScroll() {
+      let scroll_top = 0
+      if (document.documentElement && document.documentElement.scrollTop) {
+        scroll_top = document.documentElement.scrollTop
+      } else if (document.body) {
+        scroll_top = document.body.scrollTop
+      }
+      // console.log(scroll_top)
+      if (scroll_top > 3000) {
+        this.flag = true
+      } else {
+        this.flag = false
+      }
     },
     debounce(fn, delay) {
       let timer = null
@@ -50,8 +48,8 @@ export default {
           fn.apply(context, args)
         }, delay)
       }
-    },
-  },
+    }
+  }
 }
 </script>
 
@@ -68,7 +66,7 @@ export default {
   bottom: 1rem;
   right: 1rem;
   cursor: pointer;
-  animation: toTopBtn 0.8s linear;
+  // animation: toTopBtn 0.8s ease;
   svg {
     fill: white;
     width: 1em;
@@ -77,12 +75,12 @@ export default {
     font-size: 1.5rem;
   }
 }
-@keyframes toTopBtn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
+// @keyframes toTopBtn {
+//   from {
+//     opacity: 0;
+//   }
+//   to {
+//     opacity: 1;
+//   }
+// }
 </style>

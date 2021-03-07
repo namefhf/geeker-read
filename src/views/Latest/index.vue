@@ -40,7 +40,6 @@
 </template>
 
 <script>
-import { getTopics } from '../../api/topics'
 import { getLatest } from '../../api/article'
 import ArticleList from '../../components/article-list'
 import OfficialList from '../../components/official-list'
@@ -51,7 +50,7 @@ export default {
   components: {
     ArticleList,
     OfficialList,
-    HotTopics,
+    HotTopics
   },
   data() {
     return {
@@ -60,7 +59,7 @@ export default {
           id: 0,
           path: '',
           name: '全部',
-          topics: [],
+          topics: []
         },
         {
           id: 1,
@@ -70,8 +69,8 @@ export default {
             '5d9c8e24e109bff0108fe4d9',
             '5d9c9022e109bff0108fe4dd',
             '5d9c9085e109bff0108fe4e4',
-            '5d9c907de109bff0108fe4e3',
-          ],
+            '5d9c907de109bff0108fe4e3'
+          ]
         },
         {
           id: 2,
@@ -80,20 +79,20 @@ export default {
           topics: [
             '5d9c9032e109bff0108fe4de',
             '5d9c9436e109bff0108fe4f1',
-            '5d9c943de109bff0108fe4f2',
-          ],
+            '5d9c943de109bff0108fe4f2'
+          ]
         },
         {
           id: 3,
           name: 'Java',
           path: 'java',
-          topics: ['5d9c903be109bff0108fe4df', '5d9c9396e109bff0108fe4ec'],
+          topics: ['5d9c903be109bff0108fe4df', '5d9c9396e109bff0108fe4ec']
         },
         {
           id: 4,
           name: 'Python',
           path: 'python',
-          topics: ['5d9c904be109bff0108fe4e1'],
+          topics: ['5d9c904be109bff0108fe4e1']
         },
         {
           id: 5,
@@ -103,8 +102,8 @@ export default {
             '5d9c8cb0e109bff0108fe4d4',
             '5d9c8eeee109bff0108fe4da',
             '5dde29a0539769a7727afa51',
-            '5e37df498d15502cfd8f84d2',
-          ],
+            '5e37df498d15502cfd8f84d2'
+          ]
         },
         {
           id: 6,
@@ -114,8 +113,8 @@ export default {
             '5d9c9345e109bff0108fe4eb',
             '5d9c951ce109bff0108fe4fa',
             '5d9c9608e109bff0108fe504',
-            '5d9c95e9e109bff0108fe502',
-          ],
+            '5d9c95e9e109bff0108fe502'
+          ]
         },
         {
           id: 7,
@@ -131,14 +130,14 @@ export default {
             '5dce884af38aae04747302a2',
             '5dcf921ef38aae04747302a8',
             '5d9d2cc12cfd20fdc59cae62',
-            '5fa4a03b26df9a16e2763488',
-          ],
+            '5fa4a03b26df9a16e2763488'
+          ]
         },
         {
           id: 8,
           name: '算法',
           path: 'algorithm',
-          topics: ['5d9c8ca5e109bff0108fe4d3'],
+          topics: ['5d9c8ca5e109bff0108fe4d3']
         },
         {
           id: 9,
@@ -147,14 +146,14 @@ export default {
           topics: [
             '5d9c8f68e109bff0108fe4db',
             '5d9d2f312cfd20fdc59cae70',
-            '5d9d2f202cfd20fdc59cae6f',
-          ],
+            '5d9d2f202cfd20fdc59cae6f'
+          ]
         },
         {
           id: 10,
           name: '机器学习',
           path: 'MachineLearning',
-          topics: ['5dbcccd0d1a6600314832823', '5e37e35a8d15502cfd8f84f4'],
+          topics: ['5dbcccd0d1a6600314832823', '5e37e35a8d15502cfd8f84f4']
         },
         {
           id: 11,
@@ -163,19 +162,19 @@ export default {
           topics: [
             '5dc580cb61037d71b5c8e920',
             '5d9d313f2cfd20fdc59cae81',
-            '5d9d31462cfd20fdc59cae82',
-          ],
+            '5d9d31462cfd20fdc59cae82'
+          ]
         },
         {
           id: 12,
           name: '交互设计',
           path: 'design',
-          topics: ['5d9d36532cfd20fdc59cae94', '5f32331827017038a269986f'],
+          topics: ['5d9d36532cfd20fdc59cae94', '5f32331827017038a269986f']
         },
         {
           id: 13,
           name: '安全',
-          topics: ['5d9d36532cfd20fdc59cae94', '5f32331827017038a269986f'],
+          topics: ['5d9d36532cfd20fdc59cae94', '5f32331827017038a269986f']
         },
         {
           id: 14,
@@ -184,25 +183,25 @@ export default {
           topics: [
             '5d9d2e422cfd20fdc59cae68',
             '5d9d2e222cfd20fdc59cae66',
-            '5d9c8cd8e109bff0108fe4d7',
-          ],
+            '5d9c8cd8e109bff0108fe4d7'
+          ]
         },
         {
           id: 15,
           name: '测试',
           path: 'test',
-          topics: ['5d9d32e72cfd20fdc59cae91'],
+          topics: ['5d9d32e72cfd20fdc59cae91']
         },
         {
           id: 16,
           name: '科普',
           path: 'Popularscience',
-          topics: ['5e104246a5e32e035eef8c4c'],
-        },
+          topics: ['5e104246a5e32e035eef8c4c']
+        }
       ],
       latestList: [],
       flag: JSON.parse(localStorage.getItem('flag')) || false,
-      currentTopic: [],
+      currentTopic: []
     }
   },
   computed: {
@@ -212,7 +211,7 @@ export default {
       } else {
         return ''
       }
-    },
+    }
   },
   created() {
     // console.log('language', this.language)
@@ -225,10 +224,10 @@ export default {
     async getTopicLatest() {
       this.latestList = []
       const {
-        data: { data },
+        data: { data }
       } = await getLatest({
         topics: this.currentTopic,
-        language: this.language,
+        language: this.language
       })
       // console.log(data)
       this.latestList = data
@@ -238,7 +237,7 @@ export default {
       this.currentTopic = topics
       this.getTopicLatest({
         topics: this.currentTopic,
-        language: this.language,
+        language: this.language
       })
     },
     handleSwitch() {
@@ -246,8 +245,8 @@ export default {
       // this.flag = !this.flag
       localStorage.setItem('flag', JSON.stringify(this.flag))
       this.getTopicLatest()
-    },
-  },
+    }
+  }
 }
 </script>
 

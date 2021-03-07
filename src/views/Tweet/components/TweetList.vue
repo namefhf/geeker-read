@@ -1,6 +1,12 @@
 <template>
   <div class="tweet-list-wrap" v-if="tweetList.length">
-    <div class="tweet-item  " v-for="(item, index) in tweetList" :key="index">
+    <tweet-item
+      v-for="(item, index) in tweetList"
+      :key="index"
+      :item="item"
+    ></tweet-item>
+
+    <!-- <div class="tweet-item  " v-for="(item, index) in tweetList" :key="index">
       <div class="head">
         <div class="avatar">
           <img
@@ -32,7 +38,7 @@
           <div class="item" v-for="(item, index) in item.pictures" :key="index">
             <img
               :src="
-                `https://geeker-cdn.devhub.top/${item}?imageView2/1/w/150/h/150/interlace/1/q/80`
+                `https://geeker-cdn.devhub.top/${item}?imageView2/0/q/100|imageslim`
               "
               alt=""
             />
@@ -46,9 +52,16 @@
           </template>
         </div>
       </div>
-    </div>
-  </div>
 
+
+
+
+
+
+
+
+    </div> -->
+  </div>
   <div class="tweet-list-wrap Skeleton" v-else>
     <div class="tweet-item  " v-for="(item, index) in 5" :key="index">
       <div class="head" style="width:calc(100% - 32px)">
@@ -81,11 +94,15 @@
 
 <script>
 import { getTimeline } from '../../../api/tweet'
+import TweetItem from './TweetItem'
 export default {
   name: 'TweetList',
+  components: {
+    TweetItem
+  },
   data() {
     return {
-      tweetList: [],
+      tweetList: []
     }
   },
   created() {
@@ -94,12 +111,12 @@ export default {
   methods: {
     async getData() {
       const {
-        data: { data },
+        data: { data }
       } = await getTimeline({ id: 0, limit: 20 })
       // console.log(data)
       this.tweetList = data
-    },
-  },
+    }
+  }
 }
 </script>
 
@@ -147,6 +164,7 @@ export default {
     color: #172b4d;
     font-weight: 500;
     line-height: 1.6;
+    word-wrap: break-word;
     .pics {
       display: flex;
       margin-top: 10px;

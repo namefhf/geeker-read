@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="article-wrap">
-      <div class="atticle-content">
+      <div class="article-content">
         <p>{{ item.text }}&#8203;</p>
       </div>
       <div class="pic" v-if="item.pictures.length">
@@ -48,9 +48,9 @@ export default {
   props: {
     item: {
       type: Object,
-      default: () => {},
-    },
-  },
+      default: () => {}
+    }
+  }
 }
 </script>
 
@@ -93,12 +93,13 @@ export default {
 }
 .article-wrap {
   padding: 0 16px;
-  .atticle-content {
+  .article-content {
     color: #344563;
     font-size: 14px !important;
     p {
       margin-top: 1rem;
       line-height: 1.6;
+      word-break: break-all;
     }
   }
   .pic {

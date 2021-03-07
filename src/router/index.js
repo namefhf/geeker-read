@@ -16,69 +16,73 @@ const routes = [
         children: [
           {
             path: '/following',
-            component: () => import('@/views/Following'),
+            component: () => import('@/views/Following')
           },
           {
             path: '/hot',
-            component: () => import('@/views/Hot'),
+            component: () => import('@/views/Hot')
           },
           {
             path: '/latest',
-            component: () => import('@/views/Latest'),
+            component: () => import('@/views/Latest')
           },
           {
             path: 'latest/:topic',
-            component: () => import('@/views/Latest'),
+            component: () => import('@/views/Latest')
           },
           {
             path: '/tweet',
-            component: () => import('@/views/Tweet'),
+            component: () => import('@/views/Tweet')
           },
           {
             path: '/series',
-            component: () => import('@/views/Series'),
+            component: () => import('@/views/Series')
           },
           {
             path: '/series/:id',
             component: () => import('@/views/SeriesDetail'),
-            props: true,
+            props: true
           },
           {
             path: '/video',
-            component: () => import('@/views/Video'),
+            component: () => import('@/views/Video')
           },
           {
             path: '/book-store',
-            component: () => import('@/views/BookStore'),
-          },
-        ],
+            component: () => import('@/views/BookStore')
+          }
+        ]
       },
       {
         path: '/search',
         name: 'search',
-        component: () => import('@/views/Search'),
+        component: () => import('@/views/Search')
       },
       {
         path: '/signin',
         name: 'signin',
-        component: () => import('@/views/SignIn'),
+        component: () => import('@/views/SignIn')
       },
       {
         path: '/signup',
         name: 'signup',
-        component: () => import('@/views/SignUp'),
+        component: () => import('@/views/SignUp')
       },
       {
         path: '/favorites',
         name: 'favorites',
-        component: () => import('@/views/MyFavorites'),
-      },
-    ],
+        component: () => import('@/views/MyFavorites')
+      }
+    ]
   },
+  {
+    path: '*',
+    redirect: '/'
+  }
 ]
 
 const router = new VueRouter({
-  routes,
+  routes
 })
 router.beforeEach((to, from, next) => {
   // console.log(localStorage.getItem('USER'))

@@ -30,9 +30,9 @@
           书库
         </router-link>
         &nbsp;|&nbsp;
-        <router-link to="/newsletter" class="nav-item link-hover">
+        <!-- <router-link to="/newsletter" class="nav-item link-hover">
           期刊
-        </router-link>
+        </router-link> -->
       </div>
     </div>
     <router-view :key="$route.query.t"></router-view>
@@ -46,7 +46,7 @@ export default {
     // console.log('enter')
     // console.log(this.$route)
   },
-  computed: {},
+  computed: {}
 }
 </script>
 
